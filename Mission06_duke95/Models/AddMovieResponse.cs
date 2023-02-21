@@ -14,9 +14,6 @@ namespace Mission06_duke95.Models
         public int MovieId { get; set; }
 
         [Required]
-        public string Category { get; set; }
-
-        [Required]
         public string Title { get; set; }
 
         [Required]
@@ -37,7 +34,9 @@ namespace Mission06_duke95.Models
         [MaxLength(25)]
         public string Notes { get; set; }
 
-
+        //Build Foreign Key Relationships
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
 
     }
 }

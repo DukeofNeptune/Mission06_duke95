@@ -1,13 +1,24 @@
 ﻿@{
     ViewData["Title"] = "Add Movie";
 }
+
 <!--Calling model-->
 @model Mission06_duke95.Models.AddMovieResponse
+
 <!--Form for add movie-->
 <div>
     <form method="post">
-        <label asp-for="Category">Category:</label>
-        <input asp-for="Category" />
+        <div asp-validation-summary="All"></div>
+
+        <!--Change Category to dropdown selection-->
+        <label asp-for="CategoryId">Category:</label>
+        <select asp-for="CategoryId">
+            <option value="">Select a Category</option>
+            @foreach (Category c in ViewBag.Categories)
+            {
+                <option value="@c.CategoryId">@c.CategoryName</option>
+            }
+        </select>
         <br />
 
         <label asp-for="Title">Title:</label>

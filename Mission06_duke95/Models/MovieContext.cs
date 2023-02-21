@@ -15,13 +15,26 @@ namespace Mission06_duke95.Models
 
         public DbSet<AddMovieResponse> Responses { get; set; }
 
+        public DbSet<Category> Categories { get; set; }
+        //seeding data
         protected override void OnModelCreating(ModelBuilder mb)
         {
+            // Add Categories for drop down selection
+            mb.Entity<Category>().HasData(
+                new Category { CategoryId = 1, CategoryName = "Action/Adventure"},
+                new Category { CategoryId = 2, CategoryName = "Comedy" },
+                new Category { CategoryId = 3, CategoryName = "Drama" },
+                new Category { CategoryId = 4, CategoryName = "Family" },
+                new Category { CategoryId = 5, CategoryName = "Horror/Suspense" },
+                new Category { CategoryId = 6, CategoryName = "Miscellaneous" },
+                new Category { CategoryId = 7, CategoryName = "Television" },
+                new Category { CategoryId = 8, CategoryName = "VHS" }
+                );
             mb.Entity<AddMovieResponse>().HasData(
                 new AddMovieResponse
                 {
                     MovieId = 1,
-                    Category = "Action/Adventure",
+                    CategoryId = 1,
                     Title = "The Dark Knight",
                     Year = 2008,
                     Director = "Christopher Nolan",
@@ -33,7 +46,7 @@ namespace Mission06_duke95.Models
                  new AddMovieResponse
                  {
                      MovieId = 2,
-                     Category = "Action/Adventure",
+                     CategoryId = 1,
                      Title = "Lord of the Rings: The Two Towers",
                      Year = 2002,
                      Director = "Peter Jackson",
@@ -45,7 +58,7 @@ namespace Mission06_duke95.Models
                   new AddMovieResponse
                   {
                       MovieId = 3,
-                      Category = "Family",
+                      CategoryId = 4,
                       Title = "The Emperor's New Groove",
                       Year = 2000,
                       Director = "Mark Dindal",
